@@ -59,8 +59,8 @@ const Cart = () => {
                     <h6>+-</h6>
                 </div>
                 <ol>{data.map(s => <CartItem dataSet={dataSet} key={s.id} s={s}></CartItem>)}</ol>
-                <h5>Total price: ${totalPrice}</h5>
-                <h5>Tex: ${tax}</h5>
+                <p>Total price: ${totalPrice}</p>
+                <p>Tex: ${tax}</p>
                 <h4 className='text-center gtotal'>Grand Total: ${grandTotal}</h4>
                 <div className='text-center'>
                     <button onClick={orderPlace} className='btn btn-success '>Order Place</button>
