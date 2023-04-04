@@ -10,6 +10,8 @@ import Header from './components/Header/Header';
 import Products from './Products/Products';
 import Cart from './components/Cart/Cart';
 import Submit from './Products/Submit';
+import Carusal from './components/Carusal/Carusal';
+import Single from './Single/Single';
 
 
 const router = createBrowserRouter([
@@ -19,13 +21,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <Carusal></Carusal>
+        // loader: () => fetch('products.json')
+      },
+      {
+        path: '/products',
         element: <Products></Products>,
-        loader: () => fetch('products.json')
+        loader: () => fetch('https://dummyjson.com/products')
+      },
+      {
+        path: '/product/:id',
+        element: <Single></Single>,
+        loader: ({params}) => fetch(`https://dummyjson.com/products/${params.id}`)
       },
       {
         path: '/cart',
         element: <Cart></Cart>,
-        loader: () => fetch('products.json')
+        loader: () => fetch('https://dummyjson.com/products')
       },
       {
         path: '/order_place',
