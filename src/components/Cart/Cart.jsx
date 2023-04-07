@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
 import { delet, getData, local } from '../../Utiliti';
+import { Contex } from '../Header/Header';
 
 const Cart = () => {
+    const [bdg, setBdg] = useContext(Contex)
     const apiData = useLoaderData()
     const [data, setData] = useState([])
     const [chk, setChk] = useState(0)
@@ -11,8 +13,15 @@ const Cart = () => {
 
 
     const dataSet = (id, tf) => {
-        tf ? local(id) : delet(id)
+        if (tf) {
+            local(id)
+
+        } else {
+            delet(id)
+
+        }
         setChk(chk > 10 ? 0 : chk + 1)
+        setBdg(data.length)
     }
 
     useEffect(() => {
@@ -45,6 +54,7 @@ const Cart = () => {
     const orderPlace = (tf) => {
         localStorage.removeItem('shopping-cart')
         tf ? navigate('/order_place') : navigate('/products')
+        setBdg(0)
     }
 
     return (
