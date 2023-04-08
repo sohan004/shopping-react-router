@@ -12,6 +12,7 @@ import Cart from './components/Cart/Cart';
 import Submit from './Products/Submit';
 import Carusal from './components/Carusal/Carusal';
 import Single from './Single/Single';
+import Eror from './Eror/Eror';
 
 
 const router = createBrowserRouter([
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: '*',
-        element: <h1 className='text-center text-danger'>Page Not Found!!!</h1>
+        element: <Eror></Eror>
       },
     ]
   }
