@@ -60,8 +60,12 @@ const Cart = () => {
     return (
         <div className='container'>
             {data.length > 0 && <h3 className='text-center mb-4'>Item Add: {quantity}</h3>}
-            {data.length === 0 && <h3 className='text-center mb-4 text-danger'>No Item Select!!!</h3>}
-            {data.length === 0 && <div className='text-center'><button onClick={() => navigate('/products')} className='btn btn-secondary'>Go Back</button></div>}
+            {data.length === 0 && <div>
+                <h3 className='text-center my-5 mb-3  text-danger fw-bolder'>No Item Select !!!</h3>
+                <div className='text-center'><button onClick={() => navigate('/products')} className='btn btn-secondary'>Go Back</button></div>
+            </div>
+            }
+
 
             {data.length > 0 && <div className='my-4 bg-light shadow-lg p-3 rounded-3'>
                 <div className='d-flex mb-2 border-bottom border-2 justify-content-between'>
