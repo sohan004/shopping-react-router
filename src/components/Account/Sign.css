@@ -1,0 +1,18 @@
+.eye{
+    position: absolute;
+    right: 8px;
+    top: 42px;
+    cursor: pointer;
+}
+.subbtn{
+    background-color: rgb(96, 151, 101);
+    color: aliceblue;
+    margin: 10px 0;
+    transition: 0.3s;
+}
+.subbtn:hover{
+    background-color: rgb(52, 82, 55);
+    color: aliceblue;
+    margin: 10px 0;
+    transform: scale(1.1);
+}

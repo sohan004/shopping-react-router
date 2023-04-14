@@ -51,6 +51,9 @@ const Header = () => {
                                     </span>}
                                 </li>
                                 <li className="nav-item">
+                                    <Active className="nav-link active me-4" aria-current="page" to="/account">Acount</Active>
+                                </li>
+                                <li className="nav-item">
                                     <Active className="nav-link active me-4" aria-current="page" to="/about">About</Active>
                                 </li>
                             </ul>

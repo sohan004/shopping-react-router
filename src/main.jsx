@@ -13,6 +13,8 @@ import Submit from './Products/Submit';
 import Carusal from './components/Carusal/Carusal';
 import Single from './Single/Single';
 import Eror from './Eror/Eror';
+import Account from './components/Account/Account';
+import Register from './components/Account/Register';
 
 
 const router = createBrowserRouter([
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: '/order_place',
         element: <Submit></Submit>
+      },
+      {
+        path: '/account',
+        element: <Account />
+      },
+      {
+        path: '/register',
+        element: <Register />
       },
       {
         path: '*',
