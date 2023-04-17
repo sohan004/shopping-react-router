@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTypewriter, Typewriter, Cursor } from 'react-simple-typewriter';
 
 const Carusal = () => {
     const navigate = useNavigate()
@@ -7,8 +8,34 @@ const Carusal = () => {
         <div className='container'>
             <div className="d-flex my-auto  align-items-center flex-column-reverse flex-md-row">
                 <div className='w-100 w-md-50'>
-                    <p className='text-danger fw-semibold mb-0 shadow p-2 '>Sale up to 70% off</p>
-                    <h1 className='display-4 fw-bolder'>New Collection For Fall</h1>
+                    <p className='text-danger fw-semibold mb-0 shadow p-2 '>
+                        <Typewriter
+                            words={['sale up to 30% of']}
+                            loop={false}
+                            cursorStyle='|'
+                            typeSpeed={150}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                        />
+                        <span className='fw-light text-dark'>
+                            <Cursor></Cursor>
+                        </span>
+                    </p>
+                    <h1 className='display-4 fw-bolder'>Ai Eid E
+                        <span className='text-success'>
+                            <Typewriter
+                                words={[' shopping hobe uradura', ' khela hobe', ' moja hobe', ' sobar sathe valobasa hobe']}
+                                loop={false}
+                                cursorStyle='|'
+                                typeSpeed={150}
+                                deleteSpeed={50}
+                                delaySpeed={1000}
+                            />
+                        </span>
+                        <span className='fw-light'>
+                            <Cursor></Cursor>
+                        </span>
+                    </h1>
                     <h5 className='fw-normal '>Discover all the new arrivals of ready-to-wear collection.
                         <div className='mt-3'>
                             <button onClick={() => navigate('/products')} className="btn btn-warning btn-lg fw-semibold rounded-0">Shooping Now</button>

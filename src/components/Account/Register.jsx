@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Sign.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from 'firebase/auth';
-import { app } from '../fireb';
 import Swal from 'sweetalert2';
+import { AuthContex } from '../AuthProvider';
 
 
 const Register = () => {
+    const { signup, update, emailv } = useContext(AuthContex)
     const navigate = useNavigate()
     const [eye, setEye] = useState(false)
     const [eror, setEror] = useState('')
-    const auth = getAuth(app)
 
 
 
@@ -40,9 +39,11 @@ const Register = () => {
 
         else {
 
-            createUserWithEmailAndPassword(auth, email, pass)
+            signup(email, pass)
                 .then(result => {
                     setEror('')
+                    console.log(result.user)
+                    e.target.reset()
                     updp(result.user, name)
                     varify(result.user)
 
@@ -57,15 +58,13 @@ const Register = () => {
     }
 
 
-    const updp = (u, n) =>{
-        updateProfile(u , {
-            displayName: n
-        })
-        .then(()=> '')
+    const updp = (u, n) => {
+        update(u, n)
+            .then(() => '')
     }
 
     const varify = v => {
-        sendEmailVerification(v)
+        emailv(v)
             .then(() => {
                 Swal.fire(
                     'Account verify !!',

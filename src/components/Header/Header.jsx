@@ -1,13 +1,15 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Link, Outlet, useNavigation } from 'react-router-dom';
 import Spinner from '../../Spinner';
 import Active from '../../Active/Active';
 import './Header.css'
 import { getData } from '../../Utiliti';
+import { AuthContex } from '../AuthProvider';
 
 export const Contex = createContext(0)
 
 const Header = () => {
+    const { user, out } = useContext(AuthContex)
 
     const navigation = useNavigation()
 
@@ -36,7 +38,7 @@ const Header = () => {
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav fw-semibold ms-auto mb-2 mb-lg-0">
+                            <ul className="navbar-nav fw-semibold mx-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
                                     <Active className="nav-link active me-4" aria-current="page" to="/">Home</Active>
                                 </li>
@@ -51,12 +53,17 @@ const Header = () => {
                                     </span>}
                                 </li>
                                 <li className="nav-item">
-                                    <Active className="nav-link active me-4" aria-current="page" to="/account">Acount</Active>
-                                </li>
-                                <li className="nav-item">
                                     <Active className="nav-link active me-4" aria-current="page" to="/about">About</Active>
                                 </li>
                             </ul>
+                                    { user &&
+                                        <div className='d-flex align-items-center me-3 gap-3'>
+                                            <p className='my-auto text-white fw-bolder'>{user.email}</p>
+                                            <button onClick={()=>out()} className="btn btn-danger">Log Out</button>
+                                        </div>
+                                    }
+                                    <Active className=" fw-bolder active me-4" aria-current="page" to="/account">Acount</Active>
+
                         </div>
                     </div>
                 </nav>

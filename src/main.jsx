@@ -15,6 +15,7 @@ import Single from './Single/Single';
 import Eror from './Eror/Eror';
 import Account from './components/Account/Account';
 import Register from './components/Account/Register';
+import AuthProvider from './components/AuthProvider';
 
 
 const router = createBrowserRouter([
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: '/product/:id',
         element: <Single></Single>,
-        loader: ({params}) => fetch(`https://dummyjson.com/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://dummyjson.com/products/${params.id}`)
       },
       {
         path: '/cart',
@@ -64,6 +65,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
